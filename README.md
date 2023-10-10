@@ -38,7 +38,11 @@ https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login;
 
 Генерация и просмотр отчета:
 ```
-allure serve main/results --port 9999 --host localhost{code}
+allure serve main/results --port 9999 --host localhost
+```
+Запуск селениум сервера:
+```
+java -jar selenium-server-4.13.0.jar standalone
 ```
 
 
