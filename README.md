@@ -1,13 +1,16 @@
-TestTaskXYZBank
+# TestTaskXYZBank
 
-Задание:
+На данный момент выполнены все пункты кроме запуска через Selenium GRID
+
+***
+**Задание:**
 При выполнении работы необходимо использовать следующие
 технологии:
 1) Selenium GRID (тесты запускать через GRID обязательно)
 2) Использовать паттерн проектирования автотестов Page Object
 3) Реализовать формирование отчетов о пройденных тестах через Allure
 
-В задании необходимо:
+**В задании необходимо:**
 1) Использовать Python/Java, подключить библиотеку Selenium Webdriver;
 2) С помощью Selenium открыть браузер, открыть страницу страницу
 https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login;
@@ -28,3 +31,15 @@ https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login;
 Формат Сумма - число
 Формат ТипТранзакции - значение из списка [Credit, Debit]
 10) Оформить сформированный файл как вложение к отчету allure. 
+
+***
+
+Команды:
+
+Генерация и просмотр отчета:
+```
+allure serve main/results --port 9999 --host localhost{code}
+```
+
+
+
