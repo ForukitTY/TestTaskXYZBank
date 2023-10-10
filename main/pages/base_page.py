@@ -15,12 +15,12 @@ class BasePage:
     def open(self):
         self.browser.get(self.url)
 
-    def find_element(self, locator, ec_method=EC.presence_of_element_located, timeout=10) -> WebElement:
+    def find_element(self, locator, ec_method=EC.presence_of_element_located, timeout=5) -> WebElement:
         wait = WebDriverWait(self.browser, timeout)
         wait.until(ec_method(locator), message=f"Not found element {locator}")
         return self.browser.find_element(*locator)
 
-    def find_elements(self, locator, ec_method=EC.presence_of_element_located, timeout=10):
+    def find_elements(self, locator, ec_method=EC.presence_of_element_located, timeout=5):
         wait = WebDriverWait(self.browser, timeout)
         wait.until(ec_method(locator), message=f"Not found element {locator}")
         return self.browser.find_elements(*locator)

@@ -5,13 +5,13 @@ import pytest
 from main.pages.login_page import LoginPage
 from main.pages.customer_login_page import CustomerLoginPage
 from main.pages.account_page import AccountPage
-
-from main.helpers.helper import solve_fibonacci_quiz, create_screenshot, save_transactions_to_scv
 from main.pages.transactions_page import TransactionsPage
+
+from main.helpers.helper import solve_fibonacci_quiz, save_transactions_to_scv
 
 
 @allure.step
-def test_transactions(browser):
+def test_transactions(browser, attach_transactions_csv):
     """
     Цель теста:
         1. Проверить что баланс при пополнении и списании одной и той же суммы = 0
@@ -55,5 +55,3 @@ def test_transactions(browser):
     rows_for_csv = listTx.get_table_rows_structured_list
 
     save_transactions_to_scv(rows_for_csv, path=os.path.dirname(__file__))
-
-# докрутить скриншот и csv в аллюр репорт

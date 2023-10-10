@@ -1,6 +1,5 @@
 import csv
 import arrow
-import allure
 import datetime
 
 
@@ -39,11 +38,3 @@ def save_transactions_to_scv(rows, path):
             transaction_type = row["Transaction Type"]
 
             writer.writerow([join_date_time, amount, transaction_type])
-
-
-def create_screenshot(driver, name):
-    allure.attach(
-        driver.get_screenshot_as_png(),
-        name=name,
-        attachment_type=allure.attachment_type.PNG
-    )
