@@ -28,7 +28,12 @@ def test_transactions(browser, attach_transactions_csv):
     """
     user_name = "Harry Potter"
     login_page = LoginPage(browser)
-    login_page.open()
+    try:
+        login_page.get()
+        print("throw get()")
+    except:
+        print("throw open()")
+        login_page.open()
     login_page.go_to_customer_login_page()
 
     customer_login_page = CustomerLoginPage(browser)

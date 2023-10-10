@@ -4,13 +4,13 @@ import pytest
 import allure
 
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.options import Options
 
 
-@pytest.fixture
-def browser():
-    options = Options()
-    wb = webdriver.Chrome(options=options)
+@pytest.fixture(scope='session', params=[webdriver.ChromeOptions, webdriver.EdgeOptions])
+def browser(request):
+    # options = chrome_options()
+    wb = webdriver.Remote(command_executor='http://localhost:4444', options=request.param())
     # wb.implicitly_wait(3)
     yield wb
     screenshot_as_png = wb.get_screenshot_as_png()
