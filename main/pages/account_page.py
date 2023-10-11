@@ -1,4 +1,6 @@
 import selenium.webdriver.support.expected_conditions as EC
+from selenium.webdriver.remote.webelement import WebElement
+
 from main.pages.base_page import BasePage
 from main.pages.locators import AccountPageLocators
 
@@ -25,14 +27,14 @@ class AccountPage(BasePage):
         return edit
 
     def withdrawl_label(self):
-        edit = self.find_element(AccountPageLocators.WITHDRAWL_LABEL)
-        return edit
+        label = self.find_element(AccountPageLocators.WITHDRAWL_LABEL)
+        return label
 
     def submit_button(self):
         button = self.find_element(AccountPageLocators.SUBMIT_BUTTON)
         return button
 
     @property
-    def get_balance(self):
+    def get_balance(self) -> str:
         balance = self.find_element(AccountPageLocators.BALANCE)
         return balance.text

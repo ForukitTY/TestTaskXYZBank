@@ -9,12 +9,11 @@ class CustomerLoginPage(BasePage):
         url = "https://www.globalsqa.com/angularJs-protractor/BankingProject/#/customer"
         super().__init__(browser, url)
 
-    def choose_customer_by_name(self, name):
+    def choose_customer_by_name(self, name) -> None:
         """
-        Open drop list and select row with name = {name}
+        Opens drop list and select row with name = {name} otherwise raise NoSuchElementException
         """
-        drop_list = self.find_element(CustomerLoginPageLocators.YOUR_NAME_DROPLIST)
-        rows = drop_list.find_elements(*CustomerLoginPageLocators.YOUR_NAME_DROPLIST_ROWS)
+        rows = self.find_elements(CustomerLoginPageLocators.YOUR_NAME_DROPLIST_ROWS)
         for row in rows:
             if row.text == name:
                 row.click()

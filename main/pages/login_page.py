@@ -7,10 +7,10 @@ class LoginPage(BasePage):
         url = "https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login"
         super().__init__(browser, url)
 
-    def go_to_customer_login_page(self):
+    def go_to_customer_login_page(self) -> None:
         link = self.find_element(LoginPageLocators.CUSTOMER_LOGIN_BUTTON)
         link.click()
 
-    def go_to_manager_login_page(self):
+    def go_to_manager_login_page(self) -> None:
         link = self.find_element(LoginPageLocators.BANK_MANAGER_LOGIN_BUTTON)
         link.click()

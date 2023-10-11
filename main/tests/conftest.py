@@ -4,18 +4,16 @@ import pytest
 import allure
 
 from selenium import webdriver
-# from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.options import Options
 
 
-@pytest.fixture(scope='session', params=[webdriver.ChromeOptions, webdriver.EdgeOptions])
-def browser(request):
-    # options = chrome_options()
-    wb = webdriver.Remote(command_executor='http://localhost:4444', options=request.param())
-    # wb.implicitly_wait(3)
+@pytest.fixture
+def browser():
+    options = Options()
+    wb = webdriver.Chrome(options=options)
     yield wb
     screenshot_as_png = wb.get_screenshot_as_png()
     allure.attach(screenshot_as_png, name="full-page", attachment_type=allure.attachment_type.PNG)
-    time.sleep(5)  # убрать в конечном варианте
     wb.close()
 
 
