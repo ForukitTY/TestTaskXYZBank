@@ -1,6 +1,5 @@
 import os
 import allure
-import pytest
 
 from main.pages.login_page import LoginPage
 from main.pages.customer_login_page import CustomerLoginPage
@@ -28,12 +27,7 @@ def test_transactions(browser, attach_transactions_csv):
     """
     user_name = "Harry Potter"
     login_page = LoginPage(browser)
-    try:
-        login_page.get()
-        print("throw get()")
-    except:
-        print("throw open()")
-        login_page.open()
+    login_page.open()
     login_page.go_to_customer_login_page()
 
     customer_login_page = CustomerLoginPage(browser)
@@ -41,13 +35,13 @@ def test_transactions(browser, attach_transactions_csv):
     customer_login_page.login_button().click()
 
     account_page = AccountPage(browser)
-    deposit_amount = solve_fibonacci_quiz()
+    deposit_amount: int = solve_fibonacci_quiz()
     account_page.deposit_button().click()
     account_page.amount_input().send_keys(deposit_amount)
     account_page.submit_button().click()
 
     account_page.withdrawl_button().click()
-    account_page.withdrawl_label()
+    account_page.withdrawl_label()  # ждем пока обновиться лейбл над эдитом, иначе дублируется пополнение баланса
     account_page.amount_input().send_keys(deposit_amount)
     account_page.submit_button().click()
     assert account_page.get_balance == '0', (f"Неверный баланс у пользователя {user_name}, после пополнения и списания "
@@ -55,7 +49,7 @@ def test_transactions(browser, attach_transactions_csv):
     account_page.transactions_button().click()
 
     listTx = TransactionsPage(browser)
-    rows = listTx.find_table_rows()
+    rows: list = listTx.find_table_rows()
     assert len(rows) == 2, f"Неверное количество транзакций в таблице из страницы {listTx.url}"
     rows_for_csv = listTx.get_table_rows_structured_list
 
